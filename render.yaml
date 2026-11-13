@@ -1,0 +1,13 @@
+# Render blueprint: connect this repo in Render and the service is created as-is.
+# The free plan sleeps after idle; the first visit afterwards takes ~30-60s.
+services:
+  - type: web
+    name: gooncraft
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: WORKERS
+        value: "1"
